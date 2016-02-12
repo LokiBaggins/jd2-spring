@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+  <bean id="employer" class="jd2.baggins.pojos.Employer">
+  </bean>
+  <bean id="employer1" class="jd2.baggins.pojos.Employer">
+    <property name="id" value="1" />
+    <property name="name" value="Name1" />
+    <property name="phone" value="212-85-06" />
+    <property name="email" value="work@hard.com" />
+    <property name="addressId" value="1" />
+  </bean>
+  <bean id="employer2" class="jd2.baggins.pojos.Employer">
+    <property name="id" value="2" />
+    <property name="name" value="Name2" />
+    <property name="phone" value="222-85-06" />
+    <property name="email" value="work@hard.com" />
+    <property name="addressId" value="2" />
+  </bean>
+
+  <bean id="occupation" class="jd2.baggins.pojos.Occupation">
+    <property name="employer" ref="employer1" />
+  </bean>
+
+</beans>
