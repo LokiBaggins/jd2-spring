@@ -10,7 +10,7 @@ public class Occupation {
     private String studGroup;
     private String studCourse;
     @Autowired
-    @Qualifier("employer2")
+//    @Qualifier("employer2")
     private Employer employer;
 
     public Occupation() {
