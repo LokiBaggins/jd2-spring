@@ -1,6 +1,7 @@
 package jd2.baggins.pojos;
 
-import jd2.baggins.pojos.IEmployer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Occupation {
     private int id;
@@ -8,12 +9,14 @@ public class Occupation {
     private String studDepartment;
     private String studGroup;
     private String studCourse;
-    private IEmployer employer;
+    @Autowired
+    @Qualifier("employer2")
+    private Employer employer;
 
     public Occupation() {
     }
 
-    public Occupation(int id, String position, String studDepartment, String studGroup, String studCourse, IEmployer employer) {
+    public Occupation(int id, String position, String studDepartment, String studGroup, String studCourse, Employer employer) {
         this.id = id;
         this.position = position;
         this.studDepartment = studDepartment;
@@ -62,11 +65,11 @@ public class Occupation {
         this.studCourse = studCourse;
     }
 
-    public IEmployer getEmployer() {
+    public Employer getEmployer() {
         return employer;
     }
 
-    public void setEmployer(IEmployer employer) {
+    public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 
