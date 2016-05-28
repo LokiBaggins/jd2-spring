@@ -1,4 +1,4 @@
-package utils;
+package jd2.baggins.utils;
 
 import jd2.baggins.pojos.Employer;
 import jd2.baggins.pojos.Occupation;
@@ -7,11 +7,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Launcher {
-    public static void main(String[] args) {
-//        ApplicationContext xmlContext = new ClassPathXmlApplicationContext("spring-context.xml");
-        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
-//        Occupation occ = (Occupation) appContext.getBean("occupation");
+
+    public static void main(String[] args) {
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("spring-context.xml");
+//        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        Occupation occ = (Occupation) appContext.getBean("occupation");
+//        Occupation occ = appContext.getBean(Occupation.class);
 //        Occupation occ1 = (Occupation) appContext.getBean("occupation1");
 //        Occupation occ2 = (Occupation) appContext.getBean("occupation2");
 //        Employer employer = (Employer) appContext.getBean("employer");
@@ -24,7 +27,6 @@ public class Launcher {
 //        employer_proto2.setEmail("ProtoEmail_2");
 
 
-        Occupation occ = appContext.getBean(Occupation.class);
 
 
         System.out.println("occ = " + occ);

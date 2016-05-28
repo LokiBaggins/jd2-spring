@@ -1,4 +1,4 @@
-package utils;
+package jd2.baggins.utils;
 
 import jd2.baggins.pojos.Employer;
 import jd2.baggins.pojos.Occupation;
@@ -17,4 +17,6 @@ public class AppConfig {
     public Employer employer() {
         return new Employer(3, "Employer3", "321654", "work_3@hard.com", 25);
     }
+
+
 }
