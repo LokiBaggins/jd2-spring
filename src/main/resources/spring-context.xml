@@ -2,7 +2,8 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	                         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	                         http://www.springframework.org/schema/context
@@ -10,7 +11,7 @@
 	                         http://www.springframework.org/schema/aop
                            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
                            http://www.springframework.org/schema/util
-                           http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+                           http://www.springframework.org/schema/util/spring-util.xsd">
 
   <context:annotation-config/>
   <aop:aspectj-autoproxy/>
@@ -48,22 +49,30 @@
   />
 
   <!-- JDBC -->
-  <!--<util:map id="dbProps">-->
-    <!--<entry key="db.driver" value="com.mysql.jdbc.Driver"/>-->
-    <!--<entry key="db.jdbcurl" value="jdbc:mysql://localhost:3306/festival_team_db"/>-->
-    <!--<entry key="db.username" value="root"/>-->
-    <!--<entry key="db.password" value="123456"/>-->
-  <!--</util:map>-->
+  <util:map id="dbProps">
+    <entry key="driver" value="com.mysql.jdbc.Driver"/>
+    <entry key="jdbcurl" value="jdbc:mysql://localhost:3306/festival_team_db"/>
+    <entry key="username" value="root"/>
+    <entry key="password" value="123456"/>
+  </util:map>
 
-  <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"-->
-    <!--p:properties="dbProps"-->
-  <!--/>-->
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+    p:properties="dbProps"
+  />
 
-  <!--<bean id="connectionPool" class="org.apache.commons.dbcp.BasicDataSource"-->
-        <!--p:driverClassName="#{db.driver}"-->
-        <!--p:url="#{db.jdbcurl}"-->
-        <!--p:username="#{db.username}"-->
-        <!--p:password="#{db.password}"-->
+  <bean id="connectionPool" class="org.apache.commons.dbcp.BasicDataSource"
+        p:driverClassName="com.mysql.jdbc.Driver"
+        p:url="jdbc:mysql://localhost:3306/festival_team_db"
+        p:username="root"
+        p:password="123456"
+        p:initialSize="3"
+        p:maxIdle="3"
+  />
+
+    <!--p:driverClassName="${driver}"-->
+    <!--p:url="${jdbcurl}"-->
+    <!--p:username="${username}"-->
+    <!--p:password="${password}"-->
   <!--/>-->
 
 
@@ -76,8 +85,5 @@
     <!--<property name="password" value="" />-->
     <!--<property name="initialSize" value="5" />-->
     <!--<property name="maxActive" value="10" />-->
-
-
-
 
 </beans>
