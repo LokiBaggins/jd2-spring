@@ -11,13 +11,14 @@
                            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 
   <context:annotation-config/>
+  <aop:aspectj-autoproxy/>
 
-  <aop:config>
-    <aop:aspect id="log" ref="logget">
-      <aop:pointcut id="occCreation" expression="execution(* jd2.baggins.pojos.Occupation.*(.. ))"/>
-      <aop:before method="before" pointcut-ref="occCreation"/>
-    </aop:aspect>
-  </aop:config>
+  <!--<aop:config>-->
+    <!--<aop:aspect id="log" ref="logget">-->
+      <!--<aop:pointcut id="occCreation" expression="execution(* jd2.baggins.pojos.Occupation.*(.. ))"/>-->
+      <!--<aop:before method="before" pointcut-ref="occCreation"/>-->
+    <!--</aop:aspect>-->
+  <!--</aop:config>-->
 
   <bean id="logget" class="jd2.baggins.utils.AspectLogger"/>
 

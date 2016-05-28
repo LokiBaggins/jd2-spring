@@ -2,17 +2,23 @@ package jd2.baggins.utils;
 
 import jd2.baggins.pojos.Employer;
 import jd2.baggins.pojos.Occupation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Launcher {
-
+//    @Autowired
+//    @Qualifier("occupation1")
+//    Occupation occupation;
+//
 
     public static void main(String[] args) {
         ApplicationContext appContext = new ClassPathXmlApplicationContext("spring-context.xml");
 //        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
+//        Occupation occ = new Launcher().occupation;
         Occupation occ = (Occupation) appContext.getBean("occupation");
 //        Occupation occ = appContext.getBean(Occupation.class);
 //        Occupation occ1 = (Occupation) appContext.getBean("occupation1");

@@ -1,9 +1,17 @@
 package jd2.baggins.utils;
 
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Service;
+
+@Aspect
+//@Service
 public class AspectLogger {
 
-    public void before() {
-        System.out.println("Before method");
+    @Before(value = "execution(* jd2.baggins.pojos.Occupation.*(..))")
+    public void before(JoinPoint joinPoint) {
+        System.out.println("Before method: " + joinPoint.getSignature().getName());
     }
 
     public void after() {
