@@ -2,25 +2,21 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	                         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	                         http://www.springframework.org/schema/context
 	                         http://www.springframework.org/schema/context/spring-context.xsd
 	                         http://www.springframework.org/schema/aop
-                           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+                           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
   <context:annotation-config/>
   <aop:aspectj-autoproxy/>
 
-  <!--<aop:config>-->
-    <!--<aop:aspect id="log" ref="logget">-->
-      <!--<aop:pointcut id="occCreation" expression="execution(* jd2.baggins.pojos.Occupation.*(.. ))"/>-->
-      <!--<aop:before method="before" pointcut-ref="occCreation"/>-->
-    <!--</aop:aspect>-->
-  <!--</aop:config>-->
-
   <bean id="logget" class="jd2.baggins.utils.AspectLogger"/>
+  <bean id="luancher" class="jd2.baggins.utils.Launcher"/>
 
   <bean id="employer" class="jd2.baggins.pojos.Employer" scope="prototype"/>
   <bean id="employer1" class="jd2.baggins.pojos.Employer">
@@ -47,7 +43,41 @@
         p:studGroup="group1"
         p:employer-ref="employer1"/>
   <bean id="occupation2" class="jd2.baggins.pojos.Occupation"
-        p:employer="#{null}" p:studDepartment="#{T(jd2.baggins.pojos.Occupation).getSimpleName()}"/>
+        p:employer="#{null}"
+        p:studDepartment="#{T(jd2.baggins.pojos.Occupation).getSimpleName()}"
+  />
+
+  <!-- JDBC -->
+  <!--<util:map id="dbProps">-->
+    <!--<entry key="db.driver" value="com.mysql.jdbc.Driver"/>-->
+    <!--<entry key="db.jdbcurl" value="jdbc:mysql://localhost:3306/festival_team_db"/>-->
+    <!--<entry key="db.username" value="root"/>-->
+    <!--<entry key="db.password" value="123456"/>-->
+  <!--</util:map>-->
+
+  <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"-->
+    <!--p:properties="dbProps"-->
+  <!--/>-->
+
+  <!--<bean id="connectionPool" class="org.apache.commons.dbcp.BasicDataSource"-->
+        <!--p:driverClassName="#{db.driver}"-->
+        <!--p:url="#{db.jdbcurl}"-->
+        <!--p:username="#{db.username}"-->
+        <!--p:password="#{db.password}"-->
+  <!--/>-->
+
+
+  <!--<bean id="dataSource"-->
+        <!--class="org.apache.commons.dbcp.BasicDataSource">-->
+    <!--<property name="driverClassName" value="org.hsqldb.jdbcDriver" />-->
+    <!--<property name="url"-->
+              <!--value="jdbc:hsqldb:hsql://localhost/spitter/spitter" />-->
+    <!--<property name="username" value="sa" />-->
+    <!--<property name="password" value="" />-->
+    <!--<property name="initialSize" value="5" />-->
+    <!--<property name="maxActive" value="10" />-->
+
+
 
 
 </beans>

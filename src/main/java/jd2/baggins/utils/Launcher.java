@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 public class Launcher {
-//    @Autowired
-//    @Qualifier("occupation1")
-//    Occupation occupation;
-//
+    @Autowired
+    @Qualifier("employer1")
+    public Employer employer;
+
 
     public static void main(String[] args) {
         ApplicationContext appContext = new ClassPathXmlApplicationContext("spring-context.xml");
