@@ -1,28 +1,18 @@
 package jd2.baggins.pojos;
 
 public class Employer implements IEmployer {
-    private int id;
+    private Long id;
     private String name;
     private String phone;
     private String email;
+    private String position;
     private int addressId;
 
-    public Employer() {
-    }
-
-    public Employer(int id, String name, String phone, String email, int addressId) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.addressId = addressId;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,6 +38,14 @@ public class Employer implements IEmployer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public int getAddressId() {

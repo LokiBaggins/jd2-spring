@@ -1,12 +1,13 @@
-package utils;
+package jd2.baggins.utils;
 
-import jd2.baggins.pojos.Employer;
-import jd2.baggins.pojos.Occupation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import jd2.baggins.pojos.Occupation;
 
 public class Launcher {
+
+
     public static void main(String[] args) {
 //        ApplicationContext xmlContext = new ClassPathXmlApplicationContext("spring-context.xml");
         ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);

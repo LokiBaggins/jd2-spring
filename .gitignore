@@ -1,1 +1,12 @@
 .idea/
+jd2-spring-mvn.iml
+target/classes/jd2/baggins/dao/EmployerDAO.class
+target/classes/jd2/baggins/pojos/Employer.class
+target/classes/jd2/baggins/pojos/IEmployer.class
+target/classes/jd2/baggins/pojos/Occupation.class
+target/classes/jd2/baggins/utils/AppConfig$1.class
+target/classes/jd2/baggins/utils/AppConfig.class
+target/classes/jd2/baggins/utils/EventListener.class
+target/classes/jd2/baggins/utils/Launcher.class
+target/classes/spring-context.xml
+target/test-classes/jd2/baggins/AppTest.class

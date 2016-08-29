@@ -5,37 +5,66 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	                         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	                         http://www.springframework.org/schema/context
-	                         http://www.springframework.org/schema/context/spring-context.xsd">
+	                         http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+       default-autowire="constructor" >
 
-  <context:annotation-config/>
+    <context:annotation-config/>
+    <!--<context:component-scan base-package="jd2.baggins.utils"/>-->
 
-  <bean id="employer" class="jd2.baggins.pojos.Employer" scope="prototype"/>
+    <bean id="employer" class="jd2.baggins.pojos.Employer" scope="prototype"/>
 
-  <bean id="employer1" class="jd2.baggins.pojos.Employer">
-    <property name="id" value="1"/>
-    <property name="name" value="Name1"/>
-    <property name="phone" value="212-85-06"/>
-    <property name="email" value="work_1@hard.com"/>
-    <property name="addressId" value="1"/>
-  </bean>
-  <bean id="employer2" class="jd2.baggins.pojos.Employer">
-    <property name="id" value="2"/>
-    <property name="name" value="Name2"/>
-    <property name="phone" value="222-85-06"/>
-    <property name="email" value="work_2@hard.com"/>
-    <property name="addressId" value="2"/>
-  </bean>
+    <bean id="employer1" class="jd2.baggins.pojos.Employer">
+        <property name="id" value="1"/>
+        <property name="name" value="Name1"/>
+        <property name="phone" value="212-85-06"/>
+        <property name="email" value="work_1@hard.com"/>
+        <property name="addressId" value="1"/>
+    </bean>
+    <bean id="employer2" class="jd2.baggins.pojos.Employer">
+        <property name="id" value="2"/>
+        <property name="name" value="Name2"/>
+        <property name="phone" value="222-85-06"/>
+        <property name="email" value="work_2@hard.com"/>
+        <property name="addressId" value="2"/>
+    </bean>
 
-  <bean id="occupation" class="jd2.baggins.pojos.Occupation"/>
-  <bean id="occupation1" class="jd2.baggins.pojos.Occupation"
-        p:id="1"
-        p:position="student1"
-        p:studDepartment="Department1"
-        p:studCourse="1"
-        p:studGroup="group1"
-        p:employer-ref="employer1"/>
-  <bean id="occupation2" class="jd2.baggins.pojos.Occupation"
-        p:employer="#{null}" p:studDepartment="#{T(jd2.baggins.pojos.Occupation).getSimpleName()}"/>
+    <bean id="occupation" class="jd2.baggins.pojos.Occupation"/>
+    <bean id="occupation1" class="jd2.baggins.pojos.Occupation"
+          p:id="1"
+          p:position="student1"
+          p:studDepartment="Department1"
+          p:studCourse="1"
+          p:studGroup="group1"
+          p:employer-ref="employer1"/>
 
+    <bean id="occupation2" class="jd2.baggins.pojos.Occupation"
+          p:employer="#{null}"
+          p:studDepartment="#{T(jd2.baggins.pojos.Occupation).getSimpleName()}"/>
+
+
+    <!--DAO and JDBC beans-->
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="com.mysql.jdbc.Driver"
+          p:url="jdbc:mysql://localhost:3306/festival_team_db"
+          p:username="root"
+          p:password="123456"
+    />
+
+    <bean id="dataPool" class="org.apache.commons.dbcp2.BasicDataSource"
+          p:driverClassName="com.mysql.jdbc.Driver"
+          p:url="jdbc:mysql://localhost:3306/festival_team_db"
+          p:username="root"
+          p:password="123456"
+          p:initialSize="3"
+          p:maxIdle="3"
+    />
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+    <bean id="jdbcTemplatePool" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+        <constructor-arg ref="dataPool"/>
+    </bean>
 
 </beans>
